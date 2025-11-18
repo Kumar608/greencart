@@ -1,0 +1,219 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0c0f0e;
+    color: #e5e5e5;
+    overflow-x: hidden;
+}
+
+/* Smooth animated warm background */
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center,
+        rgba(0, 255, 150, 0.15),
+        rgba(0, 0, 0, 0.95)
+    );
+    animation: bgPulse 14s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+@keyframes bgPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.25); opacity: 1; }
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.8s ease-out;
+}
+
+.header h1 {
+    color: #8fffc0;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(0,255,150,0.4);
+}
+
+.header p {
+    color: #c8ffe3;
+    margin-top: 10px;
+    font-size: 1.15rem;
+    opacity: 0.85;
+}
+
+/* Navigation Buttons */
+#nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.nav-btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #baffde;
+    border: 1px solid #1aff89;
+    background: rgba(25, 40, 30, 0.6);
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0,255,150,0.25);
+}
+
+.nav-btn:hover {
+    background: rgba(0,255,150,0.18);
+    transform: translateY(-4px);
+    box-shadow: 0 0 18px rgba(0,255,150,0.5);
+}
+
+.nav-btn.active {
+    background: rgba(0,255,150,0.25);
+    box-shadow: 0 0 25px rgba(0,255,150,0.7);
+}
+
+/* Category Section */
+#category-selection {
+    text-align: center;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+#category-selection h2 {
+    font-size: 1.9rem;
+    color: #afffe0;
+    margin-bottom: 25px;
+    text-shadow: 0 0 12px rgba(0,255,150,0.3);
+}
+
+/* Category Grid */
+.category-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Category Buttons */
+.category-btn {
+    width: 270px;
+    padding: 15px;
+    background: rgba(20, 30, 25, 0.7);
+    border: 1px solid #1aff89;
+    color: #ccffe9;
+    font-size: 1.1rem;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.35s ease;
+    box-shadow: 0 0 15px rgba(0,255,150,0.3);
+}
+
+.category-btn:hover {
+    transform: scale(1.06);
+    background: rgba(0,255,150,0.22);
+    box-shadow: 0 0 30px rgba(0,255,150,0.65);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0px); }
+}
+
+
+
+/* -----------------------------------
+   FOOTER (Elegant Dark Warm Theme)
+----------------------------------- */
+.footer {
+    background: #121514;
+    padding: 50px 20px 20px;
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeIn 1.5s ease-out;
+}
+
+.footer-container {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+}
+
+.footer-col h3 {
+    color: #dfffe2;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.footer-col h4 {
+    color: #e4ffe6;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.footer-col p {
+    color: #c7c7c7;
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin: 6px 0;
+}
+
+.footer-col ul li a {
+    color: #dcdcdc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #aaffc7;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 1.3rem;
+    color: #e5e5e5;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #aaffc7;
+    transform: translateY(-3px);
+}
+
+/* Bottom part */
+.footer-bottom {
+    text-align: center;
+    color: #b8b8b8;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+.footer-bottom a {
+    color: #d4f7e1;
+    text-decoration: none;
+    font-weight: 600;
+}

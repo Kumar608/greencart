@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Export Upload</title>
+<link rel="stylesheet" href="services.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>International Service Export Upload</h1>
+    <p class="sub">Upload all documents related to services provided by one country to another</p>
+
+    <div class="card">
+        <label>Service Name</label>
+        <input type="text" id="serviceName" placeholder="Enter service name (IT, Consultancy, Education...)">
+
+        <label>Service Provider Country</label>
+        <input type="text" id="providerCountry" placeholder="Enter provider country">
+
+        <label>Service Provider Company</label>
+        <input type="text" id="providerCompany" placeholder="Enter provider company">
+
+        <label>Service Receiver Country</label>
+        <input type="text" id="receiverCountry" placeholder="Enter receiving country">
+
+        <label>Service Receiver Company</label>
+        <input type="text" id="receiverCompany" placeholder="Enter receiving company">
+
+        <label>Service Date</label>
+        <input type="datetime-local" id="serviceDate">
+
+        <label>Contract Signature (File)</label>
+        <input type="file" id="contractFile">
+
+        <label>Additional Documents</label>
+        <div class="upload-area" id="uploadArea">
+            <p>Select files below</p>
+            <input type="file" id="additionalFiles" multiple>
+        </div>
+
+        <button id="uploadBtn">Verify & Upload Service</button>
+    </div>
+
+    <h2>Uploaded Service Documents</h2>
+    <ul id="fileList"></ul>
+</div>
+
+<script type="module" src="services.js"></script>
+</body>
+</html>

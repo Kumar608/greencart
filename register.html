@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Domain-Register</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  
+  <canvas id="matrix-bg"></canvas>
+
+  
+  <div class="login-container">
+    <h1 class="brand">Domain-Register</h1>
+    <h2>Create Account</h2>
+
+    <form id="registerForm">
+      <div class="input-box">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="input-box">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Choose a password" required />
+      </div>
+      
+      <div class="input-box">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" required />
+      </div>
+
+      <button type="submit">Register</button>
+
+            <a href="index.html" class="forgot-link" target="_parent">Already have an account? Login here.</a>
+
+      <div class="success" id="successMsg">✅ Registration Successful!</div>
+      <div class="error" id="errorMsg">⚠️ Registration Failed!</div> 
+    </form>
+  </div>
+
+  
+  <script type="module">
+    // --- START: FIREBASE AUTH LOGIC ---
+
+    // 1. Import necessary Firebase functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    // NOTE: We now import 'createUserWithEmailAndPassword'
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    // 2. YOUR FIREBASE CONFIGURATION OBJECT (USE YOUR ACTUAL VALUES)
+    const firebaseConfig = {
+      apiKey: "AIzaSyBjhAwiM7liOmO98ACNPq3eEdE4oasAIes", // <-- Your actual API Key
+      authDomain: "greencart-ae8c9.firebaseapp.com",
+      projectId: "greencart-ae8c9",
+      storageBucket: "greencart-ae8c9.firebasestorage.app",
+      messagingSenderId: "321216625878",
+      appId: "1:321216625878:web:0d8809900ccd1634cedd77",
+      measurementId: "G-S7J4E0WCVV"
+    };
+
+    // 3. Initialize Firebase App and Auth Service
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app); 
+
+    // 4. Get references to form elements
+    const form = document.getElementById("registerForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword"); // New input
+    const successMsg = document.getElementById("successMsg");
+    const errorMsg = document.getElementById("errorMsg");
+
+    // Helper function to display messages
+    function showMessage(element, message) {
+      successMsg.style.display = "none";
+      errorMsg.style.display = "none";
+      element.textContent = message;
+      element.style.display = "block";
+      setTimeout(() => {
+        element.style.display = "none";
+      }, 3000);
+    }
+
+    // 5. Form submit handler with Firebase registration logic
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+
+      // Basic Client-Side Validation
+      if (!email || !password || !confirmPassword) {
+        showMessage(errorMsg, "⚠️ All fields are required.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showMessage(errorMsg, "⚠️ Passwords do not match.");
+        return;
+      }
+
+      try {
+        // CORE: Firebase Sign-Up Call (The key difference from login)
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Success Logic
+        console.log("User successfully registered:", user.uid);
+        showMessage(successMsg, "✅ Account created! Redirecting to login...");
+
+        // **TODO: Redirect the user to the login page after successful registration**
+        setTimeout(() => {
+          window.location.href = "index.html"; // Redirects to your login page
+        }, 2000);
+
+        form.reset(); // Clear inputs
+
+      } catch (error) {
+        // Error Logic
+        const errorCode = error.code;
+        console.error("Firebase Error:", errorCode);
+        
+        let userMessage = "⚠️ Registration Failed.";
+        
+        if (errorCode === 'auth/email-already-in-use') {
+          userMessage = "⚠️ This email is already registered.";
+        } else if (errorCode === 'auth/weak-password') {
+          userMessage = "⚠️ Password should be at least 6 characters.";
+        } else if (errorCode === 'auth/invalid-email') {
+          userMessage = "⚠️ Invalid email format.";
+        }
+
+        showMessage(errorMsg, userMessage);
+        passwordInput.value = '';
+        confirmPasswordInput.value = '';
+      }
+    });
+    // --- END: FIREBASE AUTH LOGIC ---
+
+
+    // --- START: EXISTING MATRIX BACKGROUND LOGIC (UNCHANGED) ---
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = '01HTMLCSSJAVASCRIPT<>[]{}CODEFIXSOFT';
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#00ff9f';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 35);
+    // --- END: EXISTING MATRIX BACKGROUND LOGIC ---
+  </script>
+</body>
+</html>

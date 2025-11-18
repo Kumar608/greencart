@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="forgate.css">
+  <script src="forgate.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>🔐 Forgot Password</h2>
+
+    <form id="forgotForm">
+      <!-- Step 1: Phone Number -->
+      <div class="input-box" id="phoneBox">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+        <button type="button" id="generateOtp">Generate OTP</button>
+      </div>
+
+      <!-- Step 2: New Password (hidden initially) -->
+      <div id="passwordBox" class="hidden">
+        <div class="input-box">
+          <label for="newPass">New Password</label>
+          <input type="password" id="newPass" placeholder="Enter new password" required>
+        </div>
+        <div class="input-box">
+          <label for="confirmPass">Confirm Password</label>
+          <input type="password" id="confirmPass" placeholder="Confirm password" required>
+        </div>
+        <button type="submit" id="updateBtn">Update Password</button>
+      </div>
+
+      <div class="success" id="successMsg">✅ Password updated successfully!</div>
+    </form>
+  </div>
+
+  <script src="forgot.js"></script>
+</body>
+</html>

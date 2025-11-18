@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International Travel Service Upload</title>
+<link rel="stylesheet" href="trevlling.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>International Travel Service Documentation</h1>
+    <p class="sub">Upload all documents related to travel services offered from one country to another</p>
+
+    <div class="card">
+        <label>Travel Service Type</label>
+        <input type="text" id="serviceType" placeholder="Visa Processing, Travel Packages, Airline Services...">
+
+        <label>Provider Country</label>
+        <input type="text" id="providerCountry" placeholder="Enter service provider country">
+
+        <label>Receiver Country</label>
+        <input type="text" id="receiverCountry" placeholder="Enter service receiving country">
+
+        <label>Upload Travel Documents</label>
+        <div class="upload-area" id="uploadArea">
+            <p>Drag & Drop travel documents here<br>or click to select</p>
+            <input type="file" id="fileUpload" multiple>
+        </div>
+
+        <button id="uploadBtn">Verify & Upload Documents</button>
+    </div>
+
+    <h2>Verified & Uploaded Files</h2>
+    <ul id="fileList"></ul>
+</div>
+
+<script type="module" src="trevlling.js"></script>
+</body>
+</html>

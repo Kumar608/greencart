@@ -1,0 +1,231 @@
+/* --- 1. Global Variables & Reset --- */
+:root {
+  --primary-color: #00ff9f;   /* Matrix Green */
+  --secondary-color: #00bfff; /* Cyber Blue */
+  --error-color: #ff005c;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-color: #ffffff;
+  --font-main: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body {
+  /* min-height: 100dvh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; /* Fallback if canvas fails */
+}
+
+/* --- 2. Matrix Background Canvas --- */
+#matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Stays behind everything */
+}
+
+/* --- 3. Glassmorphism Login Container --- */
+.login-container {
+  position: relative;
+  z-index: 10; /* Stays above canvas */
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+  margin: 20px;
+  height: 100dvh;
+  
+  /* The Glass Effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  
+  text-align: center;
+  color: var(--text-color);
+  animation: slideUp 0.8s ease-out;
+}
+
+/* --- 4. Typography --- */
+.brand {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(0, 255, 159, 0.5);
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.login-container h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #bdfbff;
+  margin-bottom: 30px;
+}
+
+/* --- 5. Form Elements --- */
+.input-box {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-box label {
+  display: block;
+  font-size: 0.9rem;
+  color: #bdfbff;
+  margin-bottom: 8px;
+  margin-left: 5px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-box input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 255, 159, 0.3);
+  transform: translateY(-2px);
+}
+
+/* --- 6. Buttons --- */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 159, 0.3);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 255, 159, 0.5);
+  letter-spacing: 1px; /* Cool effect */
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* --- 7. Links (Forgot Password & Signup) --- */
+.forgot-link {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Signup specific style */
+.signup {
+  display: block; /* Makes it sit on its own line */
+  margin-top: 20px;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.3s;
+}
+
+.signup:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* --- 8. Status Messages (Success/Error) --- */
+.success, .error {
+  display: none; /* Hidden by default */
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: popIn 0.4s ease;
+}
+
+.success {
+  color: var(--primary-color);
+  background: rgba(0, 255, 159, 0.1);
+  border: 1px solid var(--primary-color);
+}
+
+.error {
+  color: var(--error-color);
+  background: rgba(255, 0, 92, 0.1);
+  border: 1px solid var(--error-color);
+}
+
+/* --- 9. Animations --- */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- 10. Responsiveness --- */
+@media (max-width: 480px) {
+  .login-container {
+    margin: 15px;
+    padding: 30px 20px;
+    width: 90%;
+  }
+
+  .brand {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,40 @@
+body {
+margin: 0;
+font-family: Poppins, sans-serif;
+background: linear-gradient(135deg, #4f7cff, #8aa8ff);
+color: #fff;
+}
+
+
+.container {
+width: 70%;
+margin: 40px auto;
+background: #ffffff15;
+padding: 30px;
+border-radius: 20px;
+backdrop-filter: blur(10px);
+box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+
+h1 { text-align: center; font-size: 32px; }
+.sub { text-align: center; margin-bottom: 20px; opacity: 0.9; }
+
+
+.card {
+display: flex;
+flex-direction: column;
+gap: 15px;
+background: #ffffff22;
+padding: 25px;
+border-radius: 15px;
+}
+
+
+.card input[type="text"],
+.card input[type="file"] {
+padding: 12px;
+border: none;
+border-radius: 8px;
+outline: none;
+}

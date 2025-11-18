@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goods Export Upload</title>
+<link rel="stylesheet" href="goods.css">
+</head>
+<body>
+<div class="container">
+    <h2>Goods Export - File Upload Section</h2>
+
+    <div class="upload-box">
+        <label for="goodsName">Goods Name</label>
+        <input type="text" id="goodsName" placeholder="Enter goods name">
+
+        <label for="country">Export Country</label>
+        <input type="text" id="country" placeholder="Enter country">
+
+        <label for="fileUploadDocs">Upload Export Documents</label>
+        <input type="file" id="fileUploadDocs" multiple>
+
+        <label for="fileUploadGst">Upload GST Documents</label>
+        <input type="file" id="fileUploadGst" multiple>
+
+        <label for="fileUploadPic">Upload Uncover picture</label>
+        <input type="file" id="fileUploadPic" multiple>
+
+        <button id="uploadBtn">Upload & Verify</button>
+    </div>
+
+    <h3>Verified Transaction Log</h3>
+    <ul id="fileList"></ul>
+</div>
+
+<script type="module" src="goods.js"></script>
+</body>
+</html>

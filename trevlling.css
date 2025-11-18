@@ -1,0 +1,71 @@
+body {
+margin: 0;
+font-family: Poppins, sans-serif;
+background: linear-gradient(135deg, #0093E9, #80D0C7);
+color: #fff;
+}
+
+
+.container {
+width: 70%;
+margin: 40px auto;
+background: #ffffff18;
+padding: 30px;
+border-radius: 20px;
+backdrop-filter: blur(12px);
+box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+
+h1 {
+text-align: center;
+font-size: 32px;
+}
+
+
+.sub {
+text-align: center;
+margin-bottom: 20px;
+opacity: 0.9;
+}
+
+
+.card {
+display: flex;
+flex-direction: column;
+gap: 15px;
+background: #ffffff22;
+padding: 25px;
+border-radius: 15px;
+}
+
+
+.card input[type="text"] {
+padding: 12px;
+border: none;
+border-radius: 8px;
+outline: none;
+}
+
+
+.upload-area {
+border: 2px dashed #fff;
+padding: 20px;
+text-align: center;
+border-radius: 10px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+
+.upload-area:hover {
+background: #ffffff33;
+}
+
+
+#uploadBtn {
+padding: 14px;
+border: none;
+background: #FFD369;
+color: #000;
+}

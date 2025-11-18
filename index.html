@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCert – Global Verifiable Trade</title>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="istyle.css">
+</head>
+
+<body>
+
+    <!-- Animated Soft Background -->
+    <div class="bg-overlay"></div>
+
+    <header class="header">
+        <h1>🌿 GreenCert – Global Verifiable Trade</h1>
+        <p>Decentralized Identity Platform for Supply Chain Auditing</p>
+    </header>
+
+    <nav id="nav-buttons">
+        <button class="category-btn" onclick="window.location.href='login.html'">Audit Domain login</button>
+        <button data-portal="audit" class="nav-btn active">🌍 Audit Agency (Issuer 1)</button>
+        <!-- <button data-portal="logistics" class="nav-btn">🚢 Logistics Co. (Issuer 2)</button> -->
+        <button data-portal="verifier" class="nav-btn" onclick="window.location.href='verify_history.html'">🛒 Verification History</button>
+    </nav>
+
+    <main id="content-area">
+        <section id="category-selection" data-portal-view="audit">
+            <h2>Select Verification Category:</h2>
+
+            <div class="category-grid">
+                <button class="category-btn" onclick="window.location.href='goods.html'">📦 Goods (Supply Chain)</button>
+                <button class="category-btn" onclick="window.location.href='services.html'">⚙️ Services (B2B Contracts)</button>
+                <button class="category-btn" onclick="window.location.href='trevlling.html'">✈️ Traveling (Certificates)</button>
+            </div>
+        </section>
+    </main>
+      <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>GreenCert SSI</h3>
+            <p>Decentralized verification for trusted global trade.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="goods.html">Goods Verification</a></li>
+                <li><a href="services.html">Service Contracts</a></li>
+                <li><a href="trevlling.html">Travel Certificates</a></li>
+                <li><a href="login.html">Audit Login</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>Email: support@greencert.org</p>
+            <p>Helpdesk: +91 98765 43210</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#">🌐</a>
+                <a href="#">🐦</a>
+                <a href="#">💼</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 GreenCert SSI – All Rights Reserved
+    </div>
+</footer>
+
+    <!-- <script src="iscript.js"></script> -->
+...
+<script src="iscript.js"></script>
+
+<footer> ... </footer>
+
+<!-- </body>
+</html> -->
+
+</body>
+</html>
